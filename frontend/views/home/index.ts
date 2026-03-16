@@ -1,12 +1,12 @@
 import type { TMDBMovie, DatabaseMovie, Genre } from "../../types/movie.ts"; // Merged import: added Genre
-import { store, loadPopularMovies, loadRecommendations, ensurePopularCount, setRenderCallback } from "../../lib/store"; // Merged import: added loadRecommendations, ensurePopularCount
-import { SearchComponent } from "../../components/search";
-import createMovieModal from "../../components/Modal";
-import { getMovies, upsertMovieStatusByTmdbId } from "../../services/movieApi";
-import { getFavorites, isFavorite, toggleFavorite, syncFavoriteToDatabase } from "../../lib/favorites";
-import { Icons } from "../../components/icons";
-import { getGenres } from '../../services/tmdbApi'; // Keep getGenres
-import { createFilterComponent } from '../../components/filter'; // Keep createFilterComponent
+import { store, loadPopularMovies, loadRecommendations, ensurePopularCount, setRenderCallback } from "../../lib/store.ts"; // Merged import: added loadRecommendations, ensurePopularCount
+import { SearchComponent } from "../../components/search.ts";
+import createMovieModal from "../../components/Modal.ts";
+import { getMovies, upsertMovieStatusByTmdbId } from "../../services/movieApi.ts";
+import { getFavorites, isFavorite, toggleFavorite, syncFavoriteToDatabase } from "../../lib/favorites.ts";
+import { Icons } from "../../components/icons.ts";
+import { getGenres } from '../../services/tmdbApi.ts'; // Keep getGenres
+import { createFilterComponent } from '../../components/filter.ts'; // Keep createFilterComponent
 
 export default function home(isLoggedIn: boolean): HTMLElement {
   const container = document.createElement("div");

@@ -1,6 +1,6 @@
 import type { DatabaseMovie, TMDBMovie } from '../types/movie.ts';
-import { reviewComponent, ratingComponent } from './review-rating';
-import { updateMovie, upsertMovieStatusByTmdbId } from '../services/movieApi';
+import { reviewComponent, ratingComponent } from './review-rating.ts';
+import { updateMovie, upsertMovieStatusByTmdbId } from '../services/movieApi.ts';
 
 export default function createMovieModal(movie: TMDBMovie, dbMovie?: DatabaseMovie, onUpdate?: (updatedMovie: DatabaseMovie) => void) {
 
