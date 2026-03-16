@@ -55,7 +55,7 @@ app.use(express.static(distPath));
 
 // 2. Handle SPA Routing (Optional but recommended)
 // This ensures that if a user refreshes on a sub-page, they don't get a 404
-app.get('*', (req, res) => {
+app.get('*', (req: Request, res: Response) => {
   // If the request starts with /api but didn't match any route, return 404
   if (req.path.startsWith('/api')) {
     return res.status(404).json({
