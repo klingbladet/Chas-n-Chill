@@ -25,3 +25,4 @@ dist-ssr
 my-project
 CLAUDE.md
 .claude 
+.env
