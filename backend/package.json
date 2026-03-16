@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch server.ts",
     "build": "tsc && cp -r public dist/",
-    "reset-db": "tsx src/reset-database.ts"
+    "reset-db": "tsx reset-database.ts"
   },
   "author": "",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "@clerk/backend": "^2.29.4",
     "better-sqlite3": "^12.5.0",
     "cors": "^2.8.5",
+    
     "dotenv": "^16.4.5",
     "express": "^4.22.1"
   },

@@ -19,6 +19,7 @@
     "@clerk/clerk-js": "^5.121.0",
     "@tailwindcss/vite": "^4.1.18",
     "better-sqlite3": "^12.6.2",
+    "clerk": "^0.8.3",
     "esbuild": "^0.25.12",
     "fdir": "^6.5.0",
     "nanoid": "^3.3.11",
@@ -40,5 +41,6 @@
   "bugs": {
     "url": "https://github.com/klingbladet/u06-vanilla-ts-project--filmlistan/issues"
   },
-  "homepage": "https://github.com/klingbladet/u06-vanilla-ts-project--filmlistan#readme"
+  "homepage": "https://github.com/klingbladet/u06-vanilla-ts-project--filmlistan#readme",
+  "packageManager": "pnpm@11.0.0-dev.1005+sha512.91f84a392eea348ea4852a182912d2520273a4336f933b78cc44bc931eb999923c097e9433a9b355adc1f725725ea99082fc9f032a559df832632e764c92c798"
 }

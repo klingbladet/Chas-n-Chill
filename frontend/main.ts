@@ -1,13 +1,13 @@
 import "./style.css";
 import { createHeader } from "./views/static/header/index";
-import footerHTML from "./views/static/footer/index.html?raw";
+import footerHTML from "../views/static/footer/index.html?raw";
 
 // Vyer
-import home from "./views/home/index.ts";
-import watchlist from "./views/watchlist/index.ts";
-import watched from "./views/watched/index.ts";
-import loginView from "./views/login/index.ts";
-import authRequired from "./views/auth-required/index.ts";
+import home from "./views/home/index";
+import watchlist from "./views/watchlist/index";
+import watched from "./views/watched/index";
+import loginView from "./views/login/index";
+import authRequired from "./views/auth-required/index";
 import { Clerk } from '@clerk/clerk-js';
 
 

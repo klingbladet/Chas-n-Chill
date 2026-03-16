@@ -49,8 +49,8 @@ app.get('/api', (req: Request, res: Response) => {
   });
 });
 
-// Serve static files from the built frontend (root /dist folder)
-const distPath = path.join(__dirname, '../../dist');
+// Serve static files from the built frontend (frontend/dist folder)
+const distPath = path.join(__dirname, '../frontend/dist');
 app.use(express.static(distPath));
 
 // 2. Handle SPA Routing (Optional but recommended)
