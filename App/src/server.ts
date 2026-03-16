@@ -17,13 +17,6 @@ const __dirname = path.dirname(__filename);
 app.use(cors()); 
 app.use(express.json()); 
 
-app.use(express.static(path.join(__dirname, '../public')));
-
-// 2. Handle SPA Routing (Optional but recommended)
-// This ensures that if a user refreshes on a sub-page, they don't get a 404
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-});
 // Routes
 app.use('/api/movies', moviesRouter);
 
@@ -36,8 +29,8 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-// Root-endpoint
-app.get('/', (req: Request, res: Response) => {
+// Root-endpoint (API Docs)
+app.get('/api', (req: Request, res: Response) => {
   res.json({
     message: 'Movie Watchlist API',
     version: '1.0.0',
@@ -56,13 +49,25 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
-// 404-hanterare
-app.use((req: Request, res: Response) => {
-  res.status(404).json({
-    error: 'Not Found',
-    message: `Cannot ${req.method} ${req.path}`,
-    hint: 'Check the API documentation for available endpoints'
-  });
+// Serve static files from the built frontend (root /dist folder)
+const distPath = path.join(__dirname, '../../dist');
+app.use(express.static(distPath));
+
+// 2. Handle SPA Routing (Optional but recommended)
+// This ensures that if a user refreshes on a sub-page, they don't get a 404
+app.get('*', (req, res) => {
+  // If the request starts with /api but didn't match any route, return 404
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({
+      error: 'Not Found',
+      message: `Cannot ${req.method} ${req.path}`,
+      hint: 'Check the API documentation for available endpoints'
+    });
+  }
+  
+  // Otherwise, serve the SPA index.html
+  const indexPath = path.join(distPath, 'index.html');
+  res.sendFile(indexPath);
 });
 
 // Felhanterare 
@@ -83,8 +88,8 @@ app.listen(PORT, () => {
   console.log('');
   console.log(`✓ Server running on http://localhost:${PORT}`);
   console.log(`✓ Health check: http://localhost:${PORT}/api/health`);
-  console.log(`✓ API docs: http://localhost:${PORT}/`);
-  console.log('');
+  console.log(`✓ API docs: http://localhost:${PORT}/api`);
+  console.log(`✓ Frontend: http://localhost:${PORT}/`);
   console.log('Available endpoints:');
   console.log('  GET    /api/movies              - Get all movies');
   console.log('  GET    /api/movies/:id          - Get specific movie');

@@ -1,7 +1,11 @@
 // API-anrop till Movie API
 import type { DatabaseMovie, TMDBMovie } from "../types/movie.ts";
 
-const API_BASE_URL = "http://localhost:3000/api";
+// If we are running in Vite dev mode (port 5173), point to the local backend on port 3000.
+// Otherwise (production or running through backend port), use relative path /api.
+const API_BASE_URL = window.location.port === "5173" 
+  ? "http://localhost:3000/api" 
+  : "/api";
 
 async function getHeaders(): Promise<HeadersInit> {
   const headers: Record<string, string> = {
